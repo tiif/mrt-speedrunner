@@ -32,6 +32,8 @@ function App() {
   //begin and end coordinate
   const [begCor, setBegCor] = useState(initialBegCoorValues);
   const [endCor, setEndCor] = useState(initialEndCoorValues);
+  //api token, todo: hide it somewhere
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NDI0NjYzMSwiZXhwIjoxNjg0Njc4NjMxLCJuYmYiOjE2ODQyNDY2MzEsImp0aSI6IjZhZDNlM2FmZTM2ZDgzNmNmN2YwMTE4ZWIzNjQ5MzA2In0.ko3pbuP-_mch3lJW-6GboRyQ3eEy-eQrBSiJHNtxcWU";
   //route result
   const [route, setRoute] = useState([]);
 
@@ -77,7 +79,7 @@ function App() {
 
   //fetch trip information 
   const fetchTrip = () => {
-    Axios.get(`https://developers.onemap.sg/privateapi/routingsvc/route?start=${begCor.lat_beg}%2C${begCor.long_beg}&end=${endCor.lat_end}%2C${endCor.long_end}%2C&routeType=pt&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4MzczMjEzMiwiZXhwIjoxNjg0MTY0MTMyLCJuYmYiOjE2ODM3MzIxMzIsImp0aSI6ImVkNzZiNDdlZGU0OTJmN2UxZjQ2ZTZjOGJiNTY4YmFiIn0.W_EZXGzCM_UP1bMi5RRLFMmY0kbEicOwrJyxtbKwIKw&date=2023-03-12&time=15%3A30%3A00&mode=RAIL&maxWalkDistance=1000`)
+    Axios.get(`https://developers.onemap.sg/privateapi/routingsvc/route?start=${begCor.lat_beg}%2C${begCor.long_beg}&end=${endCor.lat_end}%2C${endCor.long_end}%2C&routeType=pt&token=${token}&date=2023-03-12&time=15%3A30%3A00&mode=RAIL&maxWalkDistance=1000`)
       .then((res) => {
         var result = [];
         var subway_result = res.data.plan.itineraries[0].legs.filter(x => x.mode == "SUBWAY");
