@@ -11,7 +11,6 @@
 - click ``show result``
 
 ### Further improvement
-- setup input field for api keys
 - use menu for user to select the mrt station
 - try catch possible errors
 
