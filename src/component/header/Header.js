@@ -43,6 +43,8 @@ const Header = () => {
   //begin and end coordinate
   const [begCor, setBegCor] = useState(initialBegCoorValues);
   const [endCor, setEndCor] = useState(initialEndCoorValues);
+  //api token
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NjQ3Njg5NiwiZXhwIjoxNjg2OTA4ODk2LCJuYmYiOjE2ODY0NzY4OTYsImp0aSI6IjA2ZjZlZTRlYzQxYzMyZDQ4MDM1MDY2N2NiODU2Y2I4In0.KuTMrERTDm5-VzVw_f6ig5aG7CjDsrw-dlEwXhYkeqg"
   //route result
   const [route, setRoute] = useState([]);
 
@@ -88,16 +90,19 @@ const Header = () => {
 
   //fetch trip information 
   const fetchTrip = () => {
-    Axios.get(`https://developers.onemap.sg/privateapi/routingsvc/route?start=${begCor.lat_beg}%2C${begCor.long_beg}&end=${endCor.lat_end}%2C${endCor.long_end}%2C&routeType=pt&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMzIyLCJ1c2VyX2lkIjoxMDMyMiwiZW1haWwiOiIyMDE1c2luZGh1QGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NDI0NDcxNSwiZXhwIjoxNjg0Njc2NzE1LCJuYmYiOjE2ODQyNDQ3MTUsImp0aSI6IjJmMGY1NTc5YjhkNDE0ZGVlNTFkNDE1YzYxOTJjOGI1In0.XWjuSKW3dJfk8cOSFuXNXNtFGaRNUODvqi8WZ9ufIvA&date=2023-03-12&time=15%3A30%3A00&mode=RAIL&maxWalkDistance=1000`)
+    Axios.get(`https://developers.onemap.sg/privateapi/routingsvc/route?start=${begCor.lat_beg}%2C${begCor.long_beg}&end=${endCor.lat_end}%2C${endCor.long_end}%2C&routeType=pt&token=${token}&date=2023-03-12&time=15%3A30%3A00&mode=RAIL&maxWalkDistance=1000`)
       .then((res) => {
         var result = [];
+        console.log(res);
         var subway_result = res.data.plan.itineraries[0].legs.filter(x => x.mode === "SUBWAY");
+        var transit_result= res.data.plan.itineraries[0].legs.filter(x => x.mode === "WALK" && x.steps[0].streetName == "Transfer");
+        console.log(transit_result[0].from.name); //transit mrt station name
         subway_result.forEach(x => {result.push(x.from.name + " (" + x.from.stopCode + ")");
           result.push(x.intermediateStops.map(y => y.name + " (" + y.stopCode + ")"));
           result.push(x.to.name + " (" + x.to.stopCode + ")");
         }
         );
-        console.log(result.flat()); //debug purpose
+        //console.log(result.flat()); //debug purpose
         setRoute(result.flat());
       });
   }; 
