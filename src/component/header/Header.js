@@ -5,6 +5,8 @@ import { Formik, Field, Form } from 'formik';
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import GetUsers from "./GetUsers";
+
 
 import {
   ProSidebar,
@@ -44,7 +46,7 @@ const Header = () => {
   const [begCor, setBegCor] = useState(initialBegCoorValues);
   const [endCor, setEndCor] = useState(initialEndCoorValues);
   //api token
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NjQ3Njg5NiwiZXhwIjoxNjg2OTA4ODk2LCJuYmYiOjE2ODY0NzY4OTYsImp0aSI6IjA2ZjZlZTRlYzQxYzMyZDQ4MDM1MDY2N2NiODU2Y2I4In0.KuTMrERTDm5-VzVw_f6ig5aG7CjDsrw-dlEwXhYkeqg"
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NzU4MjYyNywiZXhwIjoxNjg4MDE0NjI3LCJuYmYiOjE2ODc1ODI2MjcsImp0aSI6ImNhYjQ5M2E2NTdkYWRkZTkyMjVkM2ZjMzRkMzI3ODcxIn0.SZjd6cSAMoV2wP0dWEVyf6vt2Aa3uLaNic0YRYKAYL4"
   //route result
   const [route, setRoute] = useState([]);
 
@@ -87,22 +89,43 @@ const Header = () => {
       });
     console.log("get end"); //debug purpose
   };
-
+  //DT12 to CC13 for double transit
   //fetch trip information 
   const fetchTrip = () => {
     Axios.get(`https://developers.onemap.sg/privateapi/routingsvc/route?start=${begCor.lat_beg}%2C${begCor.long_beg}&end=${endCor.lat_end}%2C${endCor.long_end}%2C&routeType=pt&token=${token}&date=2023-03-12&time=15%3A30%3A00&mode=RAIL&maxWalkDistance=1000`)
       .then((res) => {
-        var result = [];
         console.log(res);
+        var result = [];
         var subway_result = res.data.plan.itineraries[0].legs.filter(x => x.mode === "SUBWAY");
-        var transit_result= res.data.plan.itineraries[0].legs.filter(x => x.mode === "WALK" && x.steps[0].streetName == "Transfer");
+        var transit_result= res.data.plan.itineraries[0].legs.filter(x => (x.mode === "WALK" && x.from.vertexType == "TRANSIT"));
+        var code_result = res.data.plan.itineraries[0].legs.filter(x => x.mode === "SUBWAY");
+        //trial variable for the array passed in Getuser
         console.log(transit_result[0].from.name); //transit mrt station name
-        subway_result.forEach(x => {result.push(x.from.name + " (" + x.from.stopCode + ")");
+        //variable to keep track of all transit result
+        var result_index = 0;
+        //temporarily suspend
+        /*
+        subway_result.forEach(x => {
+          if (x.from.name == transit_result[result_index].from.name) {
+            result.push("Transit");
+            result_index++;
+          }
+          result.push(x.from.name + " (" + x.from.stopCode + ")");
           result.push(x.intermediateStops.map(y => y.name + " (" + y.stopCode + ")"));
           result.push(x.to.name + " (" + x.to.stopCode + ")");
+        } */
+          //trial for code result
+        code_result.forEach(x => {
+          if (x.from.name == transit_result[result_index].from.name) {
+            result.push("Transit");
+            result_index++;
+          }
+          result.push(x.from.stopCode);
+          result.push(x.intermediateStops.map(y => y.stopCode));
+          result.push(x.to.stopCode);
         }
         );
-        //console.log(result.flat()); //debug purpose
+        console.log(result.flat()); //debug purpose
         setRoute(result.flat());
       });
   }; 
@@ -164,15 +187,7 @@ const Header = () => {
               <br></br>
               <br></br>
               <button id="button1" onClick={fetchTrip}> Show result </button>
-              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {route.map((value) => (
-          <ListItem
-            key={value}
-            disableGutters>
-            <ListItemText primary={`${value}`} />
-          </ListItem>
-        ))}
-      </List>
+              <GetUsers stations={route}/>
               </div>
               </MenuItem>
 
@@ -185,3 +200,14 @@ const Header = () => {
 };
 
 export default Header;
+
+/*suspended for trial
+              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        {route.map((value) => (
+          <ListItem
+            key={value} 
+            disableGutters>
+            <ListItemText primary={`${value}`} />
+          </ListItem>
+        ))}
+      </List> */
