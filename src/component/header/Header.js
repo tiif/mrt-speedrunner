@@ -6,6 +6,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import GetUsers from "./GetUsers";
+import GetKey from "./GetKey";
 
 
 import {
@@ -22,8 +23,8 @@ import "react-pro-sidebar/dist/css/styles.css";
 
 const Header = () => {
 
-   //initial coordinate values
-   const initialBegCoorValues = {
+  //initial coordinate values
+  const initialBegCoorValues = {
     lat_beg:'', 
     long_beg: '', 
   };
@@ -45,10 +46,16 @@ const Header = () => {
   //begin and end coordinate
   const [begCor, setBegCor] = useState(initialBegCoorValues);
   const [endCor, setEndCor] = useState(initialEndCoorValues);
-  //api token
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwMjkwLCJ1c2VyX2lkIjoxMDI5MCwiZW1haWwiOiJwZWt5dWFuQGdtYWlsLmNvbSIsImZvcmV2ZXIiOmZhbHNlLCJpc3MiOiJodHRwOlwvXC9vbTIuZGZlLm9uZW1hcC5zZ1wvYXBpXC92MlwvdXNlclwvc2Vzc2lvbiIsImlhdCI6MTY4NzU4MjYyNywiZXhwIjoxNjg4MDE0NjI3LCJuYmYiOjE2ODc1ODI2MjcsImp0aSI6ImNhYjQ5M2E2NTdkYWRkZTkyMjVkM2ZjMzRkMzI3ODcxIn0.SZjd6cSAMoV2wP0dWEVyf6vt2Aa3uLaNic0YRYKAYL4"
+  //api token 
+  const [token, setToken] = useState("");
   //route result
   const [route, setRoute] = useState([]);
+
+  //api call for token
+  const callToken = () => {
+    Axios.get("http://localhost:6969/api/")
+      .then((res) => {setToken(res.data.access_token)});
+  };
 
   //when submit the form, update the value of begin and end 
   const handleFormSubmit = (values) => {
@@ -105,96 +112,97 @@ const Header = () => {
         var result_index = 0;
         //temporarily suspend
         /*
-        subway_result.forEach(x => {
-          if (x.from.name == transit_result[result_index].from.name) {
-            result.push("Transit");
-            result_index++;
-          }
-          result.push(x.from.name + " (" + x.from.stopCode + ")");
-          result.push(x.intermediateStops.map(y => y.name + " (" + y.stopCode + ")"));
-          result.push(x.to.name + " (" + x.to.stopCode + ")");
-        } */
-          //trial for code result
-        code_result.forEach(x => {
-          if (x.from.name == transit_result[result_index].from.name) {
-            result.push("Transit");
-            result_index++;
-          }
-          result.push(x.from.stopCode);
-          result.push(x.intermediateStops.map(y => y.stopCode));
-          result.push(x.to.stopCode);
-        }
-        );
-        console.log(result.flat()); //debug purpose
-        setRoute(result.flat());
-      });
+          subway_result.forEach(x => {
+            if (x.from.name == transit_result[result_index].from.name) {
+              result.push("Transit");
+              result_index++;
+            }
+            result.push(x.from.name + " (" + x.from.stopCode + ")");
+            result.push(x.intermediateStops.map(y => y.name + " (" + y.stopCode + ")"));
+            result.push(x.to.name + " (" + x.to.stopCode + ")");
+          } */
+            //trial for code result
+            code_result.forEach(x => {
+              if (x.from.name == transit_result[result_index].from.name) {
+                result.push("Transit");
+                result_index++;
+              }
+              result.push(x.from.stopCode);
+              result.push(x.intermediateStops.map(y => y.stopCode));
+              result.push(x.to.stopCode);
+            }
+            );
+            console.log(result.flat()); //debug purpose
+            setRoute(result.flat());
+          });
   }; 
 
   //begin and end coordinate will be get after the value of begin and end change, ie after form submittion
+  useEffect(callToken, []);
   useEffect(getBeginCoor, [begin]);
   useEffect(getEndCoor, [end]);
 
 
-    //create initial menuCollapse state using useState hook
-    const [menuCollapse, setMenuCollapse] = useState(false)
+  //create initial menuCollapse state using useState hook
+  const [menuCollapse, setMenuCollapse] = useState(false)
 
-    //create a custom function that will change menucollapse state from false to true and true to false
+  //create a custom function that will change menucollapse state from false to true and true to false
   const menuIconClick = () => {
     //condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
 
+
   return (
     <>
-      <div id="header">
-          {}
-        <ProSidebar collapsed={menuCollapse}>
-          <SidebarHeader>
-          <div className="logotext">
-              {}
-              <p id="title1"> {menuCollapse ? "" : "MRT Speedrunner"}</p>
+    <div id="header"k>
+    <ProSidebar collapsed={menuCollapse}>
+    <SidebarHeader>
+    <div className="logotext">
+    {}
+    <p id="title1"> {menuCollapse ? "" : "MRT Speedrunner"}</p>
 
-              
-            </div>
-            <div className="closemenu" onClick={menuIconClick}>
-                {}
-              {menuCollapse ? (
-                <FiMenu/>
-              ) : (
-                <FiMenu/>
-              )}
-            </div>
-          </SidebarHeader>
-          <SidebarContent>
-            <Menu>
-              <MenuItem active={true}>
-              <div className="App1">
-              <Formik 
-              initialValues= {initialPlace}
-              onSubmit = {handleFormSubmit}> 
-              <Form>
-              <label for="begin">From: </label>
-              <Field id="begin" name="begin" placeholder="CC22"/>
-              <br></br>
-              <br></br>
-              <label for="end">To: </label>
-              <Field id="end" name="end" placeholder="CC25"/>
-              <br></br>
-              <br></br>
-              <button type="submit"> Update </button>
-              </Form>
-              </Formik>
-              <br></br>
-              <br></br>
-              <button id="button1" onClick={fetchTrip}> Show result </button>
-              <GetUsers stations={route}/>
-              </div>
-              </MenuItem>
 
-            </Menu>
-          </SidebarContent>
-        </ProSidebar>
-      </div>
+    </div>
+    <div className="closemenu" onClick={menuIconClick}>
+    {}
+    {menuCollapse ? (
+      <FiMenu/>
+    ) : (
+      <FiMenu/>
+    )}
+    </div>
+    </SidebarHeader>
+    <SidebarContent>
+    <Menu>
+    <MenuItem active={true}>
+    <div className="App1">
+    <Formik 
+    initialValues= {initialPlace}
+    onSubmit = {handleFormSubmit}> 
+    <Form>
+    <label for="begin">From: </label>
+    <Field id="begin" name="begin" placeholder="CC22"/>
+    <br></br>
+    <br></br>
+    <label for="end">To: </label>
+    <Field id="end" name="end" placeholder="CC25"/>
+    <br></br>
+    <br></br>
+    <button type="submit"> Update </button>
+    </Form>
+    </Formik>
+    <br></br>
+    <br></br>
+    <button id="button1" onClick={fetchTrip}> Show result </button>
+    <GetUsers stations={route}/>
+    </div>
+    </MenuItem>
+
+    </Menu>
+    </SidebarContent>
+    </ProSidebar>
+    </div>
     </>
   );
 };
@@ -202,12 +210,12 @@ const Header = () => {
 export default Header;
 
 /*suspended for trial
-              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {route.map((value) => (
-          <ListItem
-            key={value} 
-            disableGutters>
-            <ListItemText primary={`${value}`} />
-          </ListItem>
-        ))}
-      </List> */
+  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+  {route.map((value) => (
+    <ListItem
+    key={value} 
+    disableGutters>
+    <ListItemText primary={`${value}`} />
+    </ListItem>
+  ))}
+  </List> */
