@@ -24,7 +24,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 //link for the graphql
 const link = from([
   errorLink,
-  new HttpLink({ uri: "http://localhost:6969/graphql" }),
+  new HttpLink({ uri: "https://mrt-speedrunner-server-tiif.vercel.app/graphql" }),
 ]);
 
 const client = new ApolloClient({

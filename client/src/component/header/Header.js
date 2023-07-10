@@ -52,7 +52,7 @@ const Header = () => {
 
   //api call for token
   const callToken = () => {
-    Axios.get("http://localhost:6969/api/")
+    Axios.get("https://mrt-speedrunner-server-tiif.vercel.app/api")
       .then((res) => {setToken(res.data.access_token)});
   };
 
