@@ -1,6 +1,8 @@
 # mrt-speedrunner
 
-### Environment setup
+### Quick start for user
+
+### Dev environment setup
 - install npm
 - in the project root directory, run ``npm install`` 
 - after the dependencies are installed, run ``npm start``
@@ -20,7 +22,5 @@
 ### Project log (delete in future):
 - 2023-05-15: fixed bug of api being called when mounting
 - 2023-06-24: add door feature and remote server
+- 2023-07-10: hosted both server and client separately on vercel
 
-future TODO:
-- write script to request api key 
-- host the whole project and graphq server to vercel
