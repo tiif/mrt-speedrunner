@@ -16,7 +16,7 @@ const GetUsers = ({stations}) => {
   //the result array
   const [result, setResult] = useState([]);
   useEffect(() => {
-    if (data) {
+    if (data && stations.length != 0) {
       var result = [];
       var length = stations.length;
       result.push(stations[0]);

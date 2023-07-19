@@ -1,13 +1,14 @@
 # mrt-speedrunner
 
 ### Quick start for user
+- run https://mrt-speedrunner.vercel.app/
 
 ### Dev environment setup
 - install npm
 - in the project root directory, run ``npm install`` 
 - after the dependencies are installed, run ``npm start``
 
-### Usage guide (WARNING: NOT USABLE RIGHT NOW without server)
+### Usage guide 
 - input the mrt station in the form of station code, exp: ``CC23``,``TE8``, ..., 
 - click ``update``
 - click ``show result``
