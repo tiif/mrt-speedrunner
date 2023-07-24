@@ -5,7 +5,7 @@
 [Usage guide](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#usage-guide)  
 [How it works](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#how-it-works)  
 [Expected result](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#expected-result)  
-[Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#futher-improvements)  
+[Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#further-improvements)  
 
 
 
