@@ -1,4 +1,15 @@
 # mrt-speedrunner
+### Table of content
+[Quick start for user](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#quick-start-for-user)  
+[Dev environment setup](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#dev-environment-setup)  
+[Usage guide](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#usage-guide)  
+[How it works](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#how-it-works)  
+[Expected result](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#expected-result)  
+[Further improvements](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#futher-improvements)  
+
+
+
+
 
 ### Quick start for user
 - run https://mrt-speedrunner.vercel.app/
@@ -96,9 +107,15 @@
           }
 ```
 
+### Expected result
+![image](https://github.com/tiif/mrt-speedrunner/assets/55319043/2bbf33d1-174b-44f6-9c49-79e6582edae6)
+- From DT34 to TE8
 
-### Further improvement
-- use menu for user to select the mrt station
-- try catch possible errors
+
+
+### Further improvements
+- Error handling if the something wrong with the api call. The whole page will be blank if there is any error for now.
+- Show menu bar for start and end station
+- Support station name output instead of station code
 
 
