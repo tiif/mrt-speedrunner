@@ -1,11 +1,11 @@
 # mrt-speedrunner
 ### Table of content
-[Quick start for user](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#quick-start-for-user)  
-[Dev environment setup](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#dev-environment-setup)  
-[Usage guide](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#usage-guide)  
-[How it works](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#how-it-works)  
-[Expected result](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#expected-result)  
-[Further improvements](https://github.com/tiif/mrt-speedrunner/edit/master/README.md#futher-improvements)  
+[Quick start for user](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#quick-start-for-user)  
+[Dev environment setup](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#dev-environment-setup)  
+[Usage guide](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#usage-guide)  
+[How it works](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#how-it-works)  
+[Expected result](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#expected-result)  
+[Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#futher-improvements)  
 
 
 
