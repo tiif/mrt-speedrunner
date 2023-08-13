@@ -110,7 +110,7 @@ https://github.com/tiif/mrt-speedrunner/assets/55319043/236903ce-7f46-4139-81b8-
   }; 
 
 ```
-3. The route is then passed in for ``GetUser.js`` to get the nearest door for quickest transit. //need to change the name.
+3. The route is then passed in for ``GetUser.js`` to get the nearest door for quickest transit. //need to change the name GetUsers to something clearer.
 ```javascript
      <GetUsers stations={route}/>
 ```
