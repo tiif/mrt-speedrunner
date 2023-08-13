@@ -11,8 +11,7 @@
 [Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#further-improvements)  
 
 ### Motivation
-
-![map](https://github.com/tiif/mrt-speedrunner/assets/55319043/221665b4-4f03-40ec-a606-7c55643ca2bf)
+![map](https://github.com/tiif/mrt-speedrunner/assets/55319043/2de8fd14-4d95-4b51-b4e9-5484c9a55329)
 
 We saw a reddit post that included an open-source list of the nearest door to the escalator in each MRT station. 
 https://www.reddit.com/r/singapore/comments/xq7srx/mrt_transfer_guide_for_the_really_kiasu/
@@ -20,14 +19,19 @@ https://www.reddit.com/r/singapore/comments/xq7srx/mrt_transfer_guide_for_the_re
 That post is extremely popular (2.4k upvotes) and we think it is a good idea to implement an interface for this guide so that people who are rushing to another place can get to their destination as fast as possible. 
 
 ### Poster
-![5733](https://github.com/tiif/mrt-speedrunner/assets/55319043/eba77ac0-412f-48ec-b7ab-f67d8fff7d95)
+![5733](https://github.com/tiif/mrt-speedrunner/assets/55319043/eea9e793-a517-4424-90b4-5c94e31ee5a8)
+
 - A minimal introduction poster
 
 ### Video
 
 
 
-https://github.com/tiif/mrt-speedrunner/assets/55319043/236903ce-7f46-4139-81b8-feedfe46cd0c
+
+
+https://github.com/tiif/mrt-speedrunner/assets/55319043/98cfe70c-c520-4b48-ba12-06e94214601c
+
+
 
 
 - A minimal promotional video
