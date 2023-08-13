@@ -1,5 +1,7 @@
 # mrt-speedrunner
 ### Table of content
+[Poster](https://github.com/tiif/mrt-speedrunner/blob/master/poster)  
+[Video](https://github.com/tiif/mrt-speedrunner/blob/master/video)  
 [Quick start for user](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#quick-start-for-user)  
 [Dev environment setup](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#dev-environment-setup)  
 [Usage guide](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#usage-guide)  
@@ -7,9 +9,14 @@
 [Expected result](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#expected-result)  
 [Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#further-improvements)  
 
+### Poster
+![5733](https://github.com/tiif/mrt-speedrunner/assets/55319043/eba77ac0-412f-48ec-b7ab-f67d8fff7d95)
+- A minimal introduction poster
 
+### Video
 
-
+https://github.com/tiif/mrt-speedrunner/assets/55319043/575ef290-3f71-4af6-9625-bcb6a767fca7
+- A minimal promotional video
 
 ### Quick start for user
 - run https://mrt-speedrunner.vercel.app/
