@@ -1,4 +1,4 @@
-# mrt-speedrunner
+# MRT Speedrunner
 ### Table of content
 [Motivation](https://github.com/tiif/mrt-speedrunner/blob/master/motivation)  
 [Poster](https://github.com/tiif/mrt-speedrunner/blob/master/poster)  
@@ -133,7 +133,8 @@ https://github.com/tiif/mrt-speedrunner/assets/55319043/98cfe70c-c520-4b48-ba12-
 ```
 
 ### Expected result
-![image](https://github.com/tiif/mrt-speedrunner/assets/55319043/2bbf33d1-174b-44f6-9c49-79e6582edae6)
+![image](https://github.com/tiif/mrt-speedrunner/assets/55319043/3775896d-b288-4fc9-8428-ca7254e9822d)
+
 - From DT34 to TE8
 
 
