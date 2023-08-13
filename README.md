@@ -15,7 +15,11 @@
 
 ### Video
 
-https://github.com/tiif/mrt-speedrunner/assets/55319043/575ef290-3f71-4af6-9625-bcb6a767fca7
+
+
+https://github.com/tiif/mrt-speedrunner/assets/55319043/236903ce-7f46-4139-81b8-feedfe46cd0c
+
+
 - A minimal promotional video
 
 ### Quick start for user
