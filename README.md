@@ -1,5 +1,6 @@
 # mrt-speedrunner
 ### Table of content
+[Motivation](https://github.com/tiif/mrt-speedrunner/blob/master/motivation)  
 [Poster](https://github.com/tiif/mrt-speedrunner/blob/master/poster)  
 [Video](https://github.com/tiif/mrt-speedrunner/blob/master/video)  
 [Quick start for user](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#quick-start-for-user)  
@@ -8,6 +9,15 @@
 [How it works](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#how-it-works)  
 [Expected result](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#expected-result)  
 [Further improvements](https://github.com/tiif/mrt-speedrunner/blob/master/README.md#further-improvements)  
+
+### Motivation
+
+![map](https://github.com/tiif/mrt-speedrunner/assets/55319043/221665b4-4f03-40ec-a606-7c55643ca2bf)
+
+We saw a reddit post that included an open-source list of the nearest door to the escalator in each MRT station. 
+https://www.reddit.com/r/singapore/comments/xq7srx/mrt_transfer_guide_for_the_really_kiasu/
+
+That post is extremely popular (2.4k upvotes) and we think it is a good idea to implement an interface for this guide so that people who are rushing to another place can get to their destination as fast as possible. 
 
 ### Poster
 ![5733](https://github.com/tiif/mrt-speedrunner/assets/55319043/eba77ac0-412f-48ec-b7ab-f67d8fff7d95)
@@ -123,10 +133,13 @@ https://github.com/tiif/mrt-speedrunner/assets/55319043/236903ce-7f46-4139-81b8-
 - From DT34 to TE8
 
 
-
 ### Further improvements
 - Error handling if the something wrong with the api call. The whole page will be blank if there is any error for now.
 - Show menu bar for start and end station
 - Support station name output instead of station code
+
+### Contribution
+If anyone is interested in improving this project, please submit a PR.  
+Any question regarding the implmentation please submit an issue. 
 
 
