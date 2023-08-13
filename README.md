@@ -145,6 +145,6 @@ https://github.com/tiif/mrt-speedrunner/assets/55319043/98cfe70c-c520-4b48-ba12-
 
 ### Contribution
 If anyone is interested in improving this project, please submit a PR.  
-Any question regarding the implmentation please submit an issue. 
+Any question regarding the implementation please submit an issue. 
 
 
